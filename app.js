@@ -88,7 +88,7 @@ app.put("/change-password", async (request, response) => {
     response.status(400);
     response.send("Invalid user");
   } else {
-    const passwordMatch = await bcrypt.compare(password, dbUser.password);
+    const passwordMatch = await bcrypt.compare(oldPassword, dbUser.password);
     if (passwordMatch) {
       if (newPassword.length < 5) {
         response.status(400);
